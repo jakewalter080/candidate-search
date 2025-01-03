@@ -7,6 +7,20 @@ const CandidateSearch: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string>('');
 
+  const loadNextCandidate = async () => {
+    try {
+      setIsLoading(true);
+      const candidate = await getNextCandidate();
+      setCurrentCandidate(candidate);
+      setError('');
+    } catch (err) {
+      setError('Failed to load candidate');
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   
 
 export default CandidateSearch;
