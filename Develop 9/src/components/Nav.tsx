@@ -15,7 +15,14 @@ const Nav: React.FC = () => {
           location.pathname === '/' ? 'bg-gray-900' : 'hover:bg-gray-700'
         }`}
       >
-      
+        Search
+        </Link>
+        <Link 
+          to="/saved" 
+          className={`text-white px-3 py-2 rounded-md ${
+            location.pathname === '/saved' ? 'bg-gray-900' : 'hover:bg-gray-700'
+          }`}
+        ></Link>
   )
 };
 
