@@ -20,7 +20,34 @@ const CandidateSearch: React.FC = () => {
       setIsLoading(false);
     }
   };
+  useEffect(() => {
+    loadNextCandidate();
+  }, []);
 
-  
+  const handleAccept = () => {
+    if (currentCandidate) {
+      const savedCandidates = JSON.parse(localStorage.getItem('savedCandidates') || '[]');
+      localStorage.setItem(
+        'savedCandidates',
+        JSON.stringify([...savedCandidates, currentCandidate])
+      );
+    }
+    loadNextCandidate();
+  };
+  if (isLoading) {
+    return <div className="p-4">Loading...</div>;
+  }
+
+  if (error) {
+    return <div className="p-4 text-red-600">{error}</div>;
+  }
+
+  if (!currentCandidate) {
+    return (
+      <div className="p-4 text-center">
+        No more candidates available to review.
+      </div>
+    );
+  }
 
 export default CandidateSearch;
