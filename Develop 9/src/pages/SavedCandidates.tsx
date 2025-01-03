@@ -9,6 +9,18 @@ const SavedCandidates: React.FC = () => {
     setSavedCandidates(candidates);
   }, []);
 
-  
+  const handleReject = (index: number) => {
+    const updatedCandidates = savedCandidates.filter((_, i) => i !== index);
+    setSavedCandidates(updatedCandidates);
+    localStorage.setItem('savedCandidates', JSON.stringify(updatedCandidates));
+  };
+
+  if (savedCandidates.length === 0) {
+    return (
+      <div className="p-4 text-center">
+        No candidates have been accepted yet.
+      </div>
+    );
+  }
 
 export default SavedCandidates;
