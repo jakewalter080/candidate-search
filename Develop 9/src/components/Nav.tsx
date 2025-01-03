@@ -23,6 +23,13 @@ const Nav: React.FC = () => {
             location.pathname === '/saved' ? 'bg-gray-900' : 'hover:bg-gray-700'
           }`}
         ></Link>
+                >
+          Saved Candidates
+        </Link>
+      </div>
+    </nav>
+  );
+};
   )
 };
 
