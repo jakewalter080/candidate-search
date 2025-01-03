@@ -1,8 +1,12 @@
-import { useState, useEffect } from 'react';
-import { searchGithub, searchGithubUser } from '../api/API';
+import React, { useState, useEffect } from 'react';
+import { getNextCandidate } from '../api/API';
+import type { Candidate } from '../interfaces/Candidate.interface';
 
-const CandidateSearch = () => {
-  return <h1>CandidateSearch</h1>;
-};
+const CandidateSearch: React.FC = () => {
+  const [currentCandidate, setCurrentCandidate] = useState<Candidate | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string>('');
+
+  
 
 export default CandidateSearch;
